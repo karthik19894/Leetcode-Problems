@@ -4,21 +4,18 @@
  * @return {number[][]}
  */
 var kClosest = function(points, k) {
-    const pointsMinHeap = new MinHeap();
+    const pointsMaxHeap = new MaxHeap();
     for(let point of points){
-        pointsMinHeap.insert(point);
+        pointsMaxHeap.insert(point);
+        if(pointsMaxHeap.size() > k){
+            pointsMaxHeap.remove();
+        }
     }
-    let count = 0;
-    const closestPoints = [];
-    while(count < k){
-        const nextPoint = pointsMinHeap.remove();
-        closestPoints.push(nextPoint);
-        count+=1;
-    }
-    return closestPoints;
+    // now the max heap will have only the k minimum points
+    return pointsMaxHeap.getList();
 };
 
-class MinHeap {
+class MaxHeap {
   constructor() {
     this.heap = [];
   }
@@ -42,7 +39,7 @@ class MinHeap {
     return this.heap.length === 0;
   }
   compare(idxOne, idxTwo) {
-    return this.distance(this.heap[idxOne]) < this.distance(this.heap[idxTwo]);
+    return this.distance(this.heap[idxOne]) > this.distance(this.heap[idxTwo]);
   }
   distance(point){
       const [x,y] = point;
@@ -76,4 +73,10 @@ class MinHeap {
       parentIdx = Math.floor((currentIdx - 1) / 2);
     }
   }
+  size(){
+      return this.heap.length;
+  }
+  getList(){
+      return this.heap;
+  }  
 }
