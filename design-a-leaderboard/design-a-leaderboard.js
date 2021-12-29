@@ -31,8 +31,9 @@ Leaderboard.prototype.top = function(K) {
     }
     let total = 0;
     // now the min heap will have the highest K scores
-    while(!scoresMinHeap.isEmpty()){
-        total += scoresMinHeap.remove();
+    const minHeapList = scoresMinHeap.getList();
+    for(let score of minHeapList){
+        total += score;
     }
     return total;
 };
@@ -108,5 +109,8 @@ class MinHeap {
       currentIdx = parentIdx;
       parentIdx = Math.floor((currentIdx - 1) / 2);
     }
+  }
+  getList(){
+      return this.heap;
   }
 }
