@@ -10,15 +10,13 @@ var findMinArrowShots = function(points) {
 function getMinArrowsFired(intervals){
     intervals.sort((a,b)=> a[1]-b[1]); // sorting by end interval
     let lastBalloonEndWhereArrowIsFired = intervals[0][1];
-    let currentBaloonIdx = 1;
     let arrowsFired = 1;
-    while(currentBaloonIdx < intervals.length){
+    for(let currentBaloonIdx=1; currentBaloonIdx < intervals.length; currentBaloonIdx++){
         const [currentBalloonStart, currentBalloonEnd] = intervals[currentBaloonIdx];
         if(lastBalloonEndWhereArrowIsFired < currentBalloonStart){
             arrowsFired++;
             lastBalloonEndWhereArrowIsFired = currentBalloonEnd;
         }
-        currentBaloonIdx++;
     }
     return arrowsFired;
 }
