@@ -8,7 +8,8 @@ var myAtoi = function(s) {
     let num = 0;
     let isNumberFound = false;
     let isSignFound = false;
-    for(let char of s){
+    for(let i=0; i<s.length; i++){
+        let char = s[i];
         const isWhiteSpace = char === " ";
         const isNumber = !isNaN(char) && !isWhiteSpace;
         const isSign = char === "+" || char === "-";
