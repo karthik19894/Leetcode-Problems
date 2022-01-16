@@ -4,25 +4,21 @@
  */
 var maxDistToClosest = function(seats) {
     const N = seats.length;
-    const leftDistances = new Array(seats.length).fill(N);
-    const rightDistances = new Array(seats.length).fill(N);
-    // left to right
+    let prevOccupiedSeat = null;
+    let maxDistance = 0;
     for(let i=0; i < N; i++){
         if(seats[i] === 1){
-            leftDistances[i] = 0;
-        }else if(i > 0){
-            leftDistances[i] = leftDistances[i-1] + 1;
+            if(prevOccupiedSeat === null){
+                maxDistance = i;
+            }else{
+                let distanceWithoutDivide = i - prevOccupiedSeat;
+                let distanceBetweenLastOccupiedAndCurrent = Math.floor((i - prevOccupiedSeat) / 2);
+                maxDistance = Math.max(maxDistance, distanceBetweenLastOccupiedAndCurrent);
+            }
+            prevOccupiedSeat = i;
         }
     }
-    let maxDistance = 0;
-    // right to left
-    for(let i=N-1; i>=0; i--){
-        if(seats[i] === 1){
-            rightDistances[i] = 0;
-        }else if(i < N-1){
-            rightDistances[i] = rightDistances[i+1] + 1;
-        }
-        maxDistance = Math.max(maxDistance, Math.min(leftDistances[i], rightDistances[i]));
-    }
+    // if the last seat is empty then it will not be calculated in the prev loop
+    maxDistance = Math.max(maxDistance, N-1-prevOccupiedSeat);
     return maxDistance;
 };
