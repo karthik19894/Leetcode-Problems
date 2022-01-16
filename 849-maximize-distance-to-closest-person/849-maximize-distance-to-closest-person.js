@@ -14,16 +14,14 @@ var maxDistToClosest = function(seats) {
             leftDistances[i] = leftDistances[i-1] + 1;
         }
     }
+    let maxDistance = 0;
     // right to left
-    for(let i=N; i>=0; i--){
+    for(let i=N-1; i>=0; i--){
         if(seats[i] === 1){
             rightDistances[i] = 0;
         }else if(i < N-1){
             rightDistances[i] = rightDistances[i+1] + 1;
         }
-    }
-    let maxDistance = 0;
-    for(let i=0; i < N; i++){
         maxDistance = Math.max(maxDistance, Math.min(leftDistances[i], rightDistances[i]));
     }
     return maxDistance;
