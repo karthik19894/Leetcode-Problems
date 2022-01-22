@@ -1,0 +1,1 @@
+so if we closely look at this problem, the problem is all about traversing the string in two directions, goingDown and goingUp. So we change our directions once we are at the row boundaries. Now the expectation is to map them to the rows and columns they are expected to be in and they go over the matrix to generate the final string.
