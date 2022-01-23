@@ -1,1 +1,1 @@
-​
+While we can solve this problem using recursion, but a better way to solve this would be framing the template "123456789", now if we slide along the template and see if the num is within the range we can add them to our list, this will help in solving the problem in constant time and space, since the template is always going to be fixed.
