@@ -5,17 +5,19 @@
  */
 var sequentialDigits = function(low, high) {
     const result = [];
-    for(let startDigit=1; startDigit <= 9; startDigit++){
-        populateAllSequentialDigits(low, high, startDigit, 0, result);
+    let template = "123456789";
+    let lowAsString = low.toString();
+    let highAsString = high.toString();
+    let minLength = lowAsString.length;
+    let maxLength = highAsString.length;
+    for(let length=minLength; length <= maxLength; length++){
+        for(let windowStart=0; windowStart + length <= template.length; windowStart++){
+            let sequentialNumStr = template.substring(windowStart, windowStart + length);
+            let sequentialNum = parseInt(sequentialNumStr);
+            if(sequentialNum >= low && sequentialNum <= high){
+                result.push(sequentialNum);
+            }
+        }
     }
-    return result.sort((a,b)=> a - b);
+    return result;
 };
-
-function populateAllSequentialDigits(low, high, nextDigit, num, result){
-    if(num >= low && num <= high){
-        result.push(num);
-    }
-    if(num > high || nextDigit > 9) return;
-    
-    populateAllSequentialDigits(low, high, nextDigit + 1, num * 10 + nextDigit, result);
-}
