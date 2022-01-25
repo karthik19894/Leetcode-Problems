@@ -1,0 +1,1 @@
+To optimize the search we can use binary search , so in case if the set will not gurantee that the timestamps will be in increasing order, we can implement the same using modified binary search tree instead of using a list per key.
