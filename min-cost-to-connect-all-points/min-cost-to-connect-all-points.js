@@ -20,7 +20,6 @@ var minCostConnectPoints = function(points) {
         if(willFormCycle) continue;
         edgesMade += 1;
         totalCost += edge[2];
-        union(parent, edge[0], edge[1]);
     }
     return totalCost;
 };
@@ -42,7 +41,6 @@ function getAllEdges(nodes){
     const edges = [];
     for(let i=0; i < nodes.length; i++){
         for(let j=i+1; j < nodes.length; j++){
-            if(i===j) continue;
             const {x : x1, y: y1} = nodes[i];
             const {x: x2, y: y2} = nodes[j];
             edges.push([nodes[i].id, nodes[j].id, cost(x1, y1, x2, y2)]);
