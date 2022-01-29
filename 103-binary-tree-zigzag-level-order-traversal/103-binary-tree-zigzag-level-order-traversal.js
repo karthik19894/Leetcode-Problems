@@ -16,7 +16,7 @@ var zigzagLevelOrder = function(root) {
     const queue = [root];
     let isRightToLeft = false;
     while(queue.length){
-        const currentLevel = [];
+        const currentLevel = []; // this should be a deque for optimizing inserts
         let queueLength = queue.length; 
         for(let i=0; i < queueLength; i++) {
             let pushFn = isRightToLeft ? queue.unshift : queue.push;
