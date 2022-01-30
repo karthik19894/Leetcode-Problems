@@ -18,11 +18,12 @@ var reverseKGroup = function(head, k) {
     let position = 0;
     let current = head;
     let prev = null;
-    while((length - position >= k) && current !== null){
+    while(hasAtleastKNodesRemaining(length, position, k) && current !== null){
         const previousOfLastPart = prev;
         const lastNodeOfSubList = current;
         let revPosition = 0;
         while(current && revPosition < k){
+            // reversing logic
             let next = current.next;
             current.next = prev;
             prev = current;
@@ -40,6 +41,10 @@ var reverseKGroup = function(head, k) {
     }
     return head;
 };
+
+function hasAtleastKNodesRemaining(length, position, k){
+    return (length - position) >= k;
+}
 
 function getLength(head){
     let current = head;
