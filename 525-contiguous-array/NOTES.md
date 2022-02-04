@@ -1,0 +1,5 @@
+so we know that a brute force solution would be to start from every index and iterate towards right while keeping track of number of zeros and ones, every time they are equal we can update the max count.
+​
+Now the optimal approach would be like below:
+​
+We know that when both zeros and ones have to be equal, so if we add 1 whenever we encounter 1 and subtract 1 whenever we encounter 0 then we know that we have equal number of zeros and ones, now if at any point again after the initial zero we get to zero, then we know that we have equal number of zeros and ones, now the problem comes when we have continuos 1's or continuos zeros but if we keep track of all the counts and their indexes in a hashmap, then anytime we encounter the same count again which means our sub array got balanced in between and so we can calculate the max length again.
