@@ -1,3 +1,1 @@
-so with the brute force solution we will end up iterating over the main string multiple times to see if its a subsequence, so in order to avoid this redundant looping over the main string, what we could do is we could have a map of all the words mapped to their first letter as key.
 ​
-Now whenever we find a character, we can look for words that start with this character in our map and now we can update the map by updating the word from the next character that is to be matched. whenever we find a word in our map that matches with the character we are at and it has only one character to be matched, we know we have found a match and we can increment our count.
