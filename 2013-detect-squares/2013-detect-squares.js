@@ -40,9 +40,10 @@ DetectSquares.prototype.count = function(point) {
         if(distanceOfX > 0 && distanceOfX === distanceOfY){
             let point3 = this.pointKey([x, ey]);
             let point4 = this.pointKey([ex, y]);
+            let point2Count = this.pointsCount[pointKey];
             let point3Count = this.pointsCount[point3] || 0;
             let point4Count = this.pointsCount[point4] || 0;
-            possibleSquares += (point3Count * point4Count) * this.pointsCount[pointKey];
+            possibleSquares += (point3Count * point4Count) * point2Count;
         }
     }
     return possibleSquares;
