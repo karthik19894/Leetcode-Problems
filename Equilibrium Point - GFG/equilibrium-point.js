@@ -60,11 +60,10 @@ class Solution {
         for(let i=0; i < n; i++){
             prefixSum[i] = i > 0 ? a[i] + prefixSum[i-1] : a[i];
         }
-        for(let i=n-1; i >=0 ; i--){
-            suffixSum[i] = i < n - 1 ? a[i] + suffixSum[i+1] : a[i];
-        }
         for(let i=1; i < n-1; i++){
-            if(prefixSum[i-1] === suffixSum[i+1]) return i+1;
+            let leftSum = prefixSum[i-1];
+            let rightSum = prefixSum[n-1] - prefixSum[i];
+            if(leftSum === rightSum) return i+1;
         }
         return -1;
     }
