@@ -4,14 +4,11 @@
  * @return {number}
  */
 var subarraySum = function(nums, k) {
-    const prefixSumMap = {};
+    const prefixSumMap = { 0 : 1};
     let subArrayCount = 0;
     let sum = 0;
     for(let num of nums){
         sum += num;
-        if(sum === k){
-            subArrayCount++;
-        }
         if((sum - k) in prefixSumMap){
             subArrayCount += prefixSumMap[sum - k];
         }
