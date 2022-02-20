@@ -42,5 +42,6 @@ function findLongestIncreasingFrom(matrix, cache, row, col){
             cache[row][col]= Math.max(cache[row][col],findLongestIncreasingFrom(matrix, cache, nextRow, nextCol));
         }
     }
-    return ++cache[row][col];
+    cache[row][col] = 1 + cache[row][col];
+    return cache[row][col];
 }
