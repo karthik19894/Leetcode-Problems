@@ -15,12 +15,6 @@ var validateStackSequences = function(pushed, popped) {
         }
         pushPtr++;
     }
-    while(popPtr < popped.length){
-        let nextPop = popped[popPtr];
-        let actualPopped = stack.pop();
-        if(nextPop !== actualPopped) return false;
-        popPtr++;
-    }
     return stack.length === 0;
 };
 
